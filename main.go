@@ -4,12 +4,35 @@ package main
 // import statement
 import "fmt"
 
+const x int64 = 255
+
+const (
+	id string = "radnom"
+	pass string = "hello"
+)
+
 func main() {
 	fmt.Println("Hello From Kannav!!")
 
 	// data types are the same, so string,int,floats and the other common ones
 
 	var task1 string = "something random"
+
+	// declaring multiple variables at once 
+
+	var (
+		mssg1 string = "hello"
+
+		randomInt int = 10
+
+		randomByte byte = 244
+
+		random int8 = 0
+	)
+	// this is not legal outside of function definitions
+	x:= 10
+
+
 
 	fmt.Println(task1)
 	// shorthand for initialising and declaring a variable
@@ -19,10 +42,10 @@ func main() {
 
 	// way to declare vars is
 
-	var name string = "que pasa"
+	// var name string = "que pasa"
 
-	var arr [5]int = [5]int{1, 2, 3, 4, 5}
-	arr2 := [5]int{1, 2, 3, 5, 4}
+	// var arr [5]int = [5]int{1, 2, 3, 4, 5}
+	// arr2 := [5]int{1, 2, 3, 5, 4}
 
 	for i := 0; i < 5; i++ {
 		fmt.Println(i)
@@ -41,30 +64,29 @@ func main() {
 	message := <-c
 	fmt.Println(message)
 
-	c1 := make(chan string,2)
-    c2 := make(chan string,2)
+	c1 := make(chan string, 2)
+	c2 := make(chan string, 2)
 
-    go func() {
-        c1 <- "message from c1"
-    }()
+	go func() {
+		c1 <- "message from c1"
+	}()
 
-    go func() {
-        c2 <- "message from c2"
-    }()
+	go func() {
+		c2 <- "message from c2"
+	}()
 
-    select {
-    case msg1 := <-c1:
-        fmt.Println("Received:", msg1)
-    case msg2 := <-c2:
-        fmt.Println("Received:", msg2)
-    }
+	select {
+	case msg1 := <-c1:
+		fmt.Println("Received:", msg1)
+	case msg2 := <-c2:
+		fmt.Println("Received:", msg2)
+	}
 
 }
 
 func add(a int, b int) int {
 	return a + b
 }
-
 
 //  unbuffered channles reuqire both the reciever and the sender to communicatie simultaneously, so it blocks after one input
 //  buffered allows async as well and blocks if the reciever never recieves anything or if the sender tries to put more messages than required
