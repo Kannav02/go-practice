@@ -2,12 +2,15 @@
 package main
 
 // import statement
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 const x int64 = 255
 
 const (
-	id string = "radnom"
+	id   string = "radnom"
 	pass string = "hello"
 )
 
@@ -18,7 +21,7 @@ func main() {
 
 	var task1 string = "something random"
 
-	// declaring multiple variables at once 
+	// declaring multiple variables at once
 
 	var (
 		mssg1 string = "hello"
@@ -30,9 +33,7 @@ func main() {
 		random int8 = 0
 	)
 	// this is not legal outside of function definitions
-	x:= 10
-
-
+	x := 10
 
 	fmt.Println(task1)
 	// shorthand for initialising and declaring a variable
@@ -82,6 +83,29 @@ func main() {
 		fmt.Println("Received:", msg2)
 	}
 
+	var x0 [3]int
+	var x1 = [3]int{1, 2, 3}
+	var x2 [2][3]int
+	fmt.Println(len(x0))
+
+	// slices
+
+	var slice1 = []int{1, 2, 3}
+	var slice2 []int
+	var slice3 [][]int
+	// can be used for comparing slices
+	slices.Equal(slice1, slice2)
+
+	slice1 = append(slice1, 10)
+	slice1 = append(slice1, 20, 30, 40)
+	slice2 = append(slice2, slice1...)
+
+	// length of 5 and capacity of 10
+	makeSlice := make([]int, 5, 10)
+
+	x10 := []int{1, 2, 3, 4}
+	tempSlice := make([]int, 0, 10)
+	lenOfTempSlice := copy(tempSlice, x10)
 }
 
 func add(a int, b int) int {
