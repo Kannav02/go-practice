@@ -38,3 +38,54 @@ Arrays can be converted into a slice by the expression of slicing
 xArrays = [4]int{1,2,3,4}
 xSlices = xArrays[:]
 
+
+the difference between nil and empty data structures is that, nil haven't been initialised at all, while empty ones have been
+
+
+var sliceNil []int
+
+sliceEmpty := []int{}
+
+sliceEmpty2 := make([]int,2,3)
+
+
+can't add elements to nil data structures but can add elements to empty data structures
+
+
+maps are used to map a value to another value
+
+
+sampleMap[string][]int
+
+or sampleMap := map[string][]int {}
+
+
+when accessing a value from the map, you can even see if the value existed in the map before
+
+
+v,ok = sampleMap[someValue]
+
+fmt.Println(v,ok)
+
+it would print the value and ok would contain either true or false based on wether the value exists in the map
+
+structs are implemented as follows
+
+type person struct{
+    varName varType
+    varName varType
+    varName varType
+}
+
+
+there can be anonymous structs as well
+
+they can be used when transforming data from json to be used in go or for test cases
+
+anonStruct := struct{
+    name string
+    age int
+}{
+    name: "kannav"
+    age: 21
+}
